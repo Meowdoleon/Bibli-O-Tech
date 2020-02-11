@@ -1,6 +1,6 @@
 Public Class UtilisateursBD
-    Public ReadOnly Property Users As List(Of String)
-    Public ReadOnly Property Pass As List(Of String)
+    Public ReadOnly Property Users As New List(Of String)
+    Public ReadOnly Property Pass As New List(Of String)
 
     Public Sub New()
         Users.Add("xkcd")
