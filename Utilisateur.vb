@@ -26,9 +26,6 @@ Public Class Utilisateur
                     _User = userConnect
                     _Pass = passConnect
                 End If
-            ElseIf User.Equals("Admin") AndAlso Pass.Equals("Sp33n my grand-dad") Then
-                _User = "Admin"
-                _Pass = "Sp33n my grand-dad"
             End If
         Next
     End Sub
