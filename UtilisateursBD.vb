@@ -3,7 +3,10 @@ Public Class UtilisateursBD
     Public ReadOnly Property Pass As List(Of String)
 
     Public Sub New()
-        _Users = {"xkcd", "nuropo"}
-        _Pass = {"asdf", "Gah!"}
+        Users.Add("xkcd")
+        Users.Add("nuropo")
+
+        Pass.Add("asdf")
+        Pass.Add("Gah!")
     End Sub
 End Class

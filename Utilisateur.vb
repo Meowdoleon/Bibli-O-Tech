@@ -1,7 +1,7 @@
 Public Class Utilisateur
     Private ReadOnly Property User As String
     Private ReadOnly Property Pass As String
-    Private ReadOnly Property UserDB As New UtilisateurDB()
+    Private ReadOnly Property UserDB As New UtilisateursBD()
     Private ReadOnly Property UserLst As List(Of String) = UserDB.Users
     Private ReadOnly Property PassLst As List(Of String) = UserDB.Pass
 
