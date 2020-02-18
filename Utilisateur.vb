@@ -5,10 +5,13 @@ Public Class Utilisateur
     Protected ReadOnly Property UserLst As List(Of String) = UserDB.Users
     Private ReadOnly Property PassLst As List(Of String) = UserDB.Pass
 
-
-
     Public Sub New()
 
+    End Sub
+
+    Public Sub New(userConnect, passConnect)
+        _User = userConnect
+        _Pass = passConnect
     End Sub
 
     Public Function IsAdmin() As Boolean

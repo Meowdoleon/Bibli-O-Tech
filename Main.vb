@@ -7,21 +7,34 @@ Public Class Main
         Dim UserBD As New UtilisateursBD()
 
         Dim inputStream As Stream = Console.OpenStandardInput()
-        Dim bytes(Integer.MaxValue) As Byte
+        Dim bytes(Byte.MaxValue) As Byte
         Dim chars As Char()
         Dim username As String
         Dim password As String
 
-        Console.WriteLine("Enter your username: ")
+        Console.Write("Enter your username: ")
         chars = Encoding.UTF8.GetChars(bytes)
         username = New String(chars)
+        username = Console.ReadLine()
 
-        Console.WriteLine("Enter your password: ")
+        Console.Write("Enter your password: ")
         chars = Encoding.UTF8.GetChars(bytes)
         password = New String(chars)
+        password = Console.ReadLine()
 
         If username.Equals("Admin") AndAlso password.Equals("Sp33n my grand-dad") Then
-            Dim admin = New Admin()
+            Dim user = New Utilisateur(username, password)
+
+            Console.WriteLine("Does the user have admin acces? " & user.IsAdmin)
+            Console.Write("Press enter to continue... ")
+            Console.ReadLine()
+        Else
+            Dim client = New Client(username, password)
+
+            Console.WriteLine("Does the user have admin acces? " & client.IsAdmin)
+            Console.WriteLine("Name of the user: " & client.Nom)
+            Console.Write("Press enter to continue... ")
+            Console.ReadLine()
         End If
     End Sub
 
