@@ -1,35 +1,11 @@
 Public Class Utilisateur
-    Protected ReadOnly Property User As String = String.Empty
-    Protected ReadOnly Property Pass As String = String.Empty
-    Protected ReadOnly Property UserDB As New UtilisateursBD()
-    Protected ReadOnly Property UserLst As List(Of String) = UserDB.Users
-    Private ReadOnly Property PassLst As List(Of String) = UserDB.Pass
+    Public Property username As String
+    Public Property pass As String
+    Public Property IsAdmin As Boolean
 
-    Public Sub New()
-
-    End Sub
-
-    Public Sub New(userConnect, passConnect)
-        _User = userConnect
-        _Pass = passConnect
-    End Sub
-
-    Public Function IsAdmin() As Boolean
-        If User.Equals("Admin") AndAlso Pass.Equals("Sp33n my grand-dad") Then
-            Return True
-        Else
-            Return False
-        End If
-    End Function
-
-    Protected Sub Connect(userConnect, passConnect)
-        For Each usr In UserLst
-            If usr.Equals(userConnect) Then
-                If passConnect.Equals(PassLst.ElementAt(UserLst.IndexOf(userConnect))) Then
-                    _User = userConnect
-                    _Pass = passConnect
-                End If
-            End If
-        Next
+    Public Sub New (username As String, pass As String, admin As Boolean)
+        Me.username = username
+        Me.pass = pass
+        Me.IsAdmin = admin
     End Sub
 End Class

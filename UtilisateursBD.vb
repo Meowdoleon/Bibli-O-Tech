@@ -1,24 +1,14 @@
 ﻿Public Class UtilisateursBD
-    Public ReadOnly Property Users As New List(Of String)
-    Public ReadOnly Property Pass As New List(Of String)
-    Public ReadOnly Property Nom As New List(Of String)
-    Public ReadOnly Property TelephoneNum As New List(Of String)
-    Public ReadOnly Property Courriel As New List(Of String)
+    Public Property utilisateurs As New List(Of Utilisateur)
 
-    Public Sub New()
-        Users.Add("xkcd")
-        Users.Add("nurupo")
-
-        Pass.Add("asdf")
-        Pass.Add("Gah!")
-
-        Nom.Add("Randall Tomska")
-        Nom.Add("Hōhōin Kyōma")
-
-        TelephoneNum.Add("444-444-4419")
-        TelephoneNum.Add("624-808-6235")
-
-        Courriel.Add("aaa@aaa.thats3as")
-        Courriel.Add("Kurisu@waifu.club")
+    Public Sub Connect(userConnect, passConnect)
+        For Each utilisateur In utilisateurs
+            If utilisateur.Equals(userConnect) Then
+                If passConnect.Equals(PassLst.ElementAt(UserLst.IndexOf(userConnect))) Then
+                    _User = userConnect
+                    _Pass = passConnect
+                End If
+            End If
+        Next
     End Sub
 End Class
