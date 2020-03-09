@@ -12,4 +12,12 @@ Public Class DocumentBD
         Reserve.Add(False)
         TempsDemprunt.Add(2)
     End Sub
+
+    Public Sub New(AAAA As Integer)
+        Titre.Add("MLP: Battle for Ponyland")
+        Auteur.Add("Frédéric Molas, Sébastien Rassiat")
+        Type.Add("Film")
+        Reserve.Add(True)
+        TempsDemprunt.Add(5)
+    End Sub
 End Class

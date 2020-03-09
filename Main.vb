@@ -4,28 +4,34 @@ Imports System.IO
 Public Class Main
     Public Shared Sub Main()
         Dim DocBD As New DocumentBD()
+        Dim DocBDTestModify As New DocumentBD(69)
         Dim UserBD As New UtilisateursBD()
 
         Dim inputStream As Stream = Console.OpenStandardInput()
         Dim bytes(Byte.MaxValue) As Byte
         Dim chars As Char()
-        Dim username As String
-        Dim password As String
 
         Console.Write("Enter your username: ")
         chars = Encoding.UTF8.GetChars(bytes)
-        username = New String(chars)
+        Dim username = New String(chars)
         username = Console.ReadLine()
 
         Console.Write("Enter your password: ")
         chars = Encoding.UTF8.GetChars(bytes)
-        password = New String(chars)
+        Dim password = New String(chars)
         password = Console.ReadLine()
 
         If username.Equals("Admin") AndAlso password.Equals("Sp33n my grand-dad") Then
-            Dim user = New Utilisateur(username, password)
+            Dim admin = New Admin()
 
-            Console.WriteLine("Does the user have admin acces? " & user.IsAdmin)
+            Console.WriteLine("Does the user have admin access? " & admin.IsAdmin)
+
+            admin.ModifyDocuments(Of Integer)(DocBD, DocBDTestModify)
+
+            For Each doc In DocBD.Titre
+                Console.WriteLine(doc)
+            Next
+
             Console.Write("Press enter to continue... ")
             Console.ReadLine()
         Else
@@ -33,6 +39,11 @@ Public Class Main
 
             Console.WriteLine("Does the user have admin acces? " & client.IsAdmin)
             Console.WriteLine("Name of the user: " & client.Nom)
+            Console.WriteLine(String.Empty)
+
+            For Each doc In New DocumentBD().Titre
+                Console.WriteLine(doc)
+            Next
             Console.Write("Press enter to continue... ")
             Console.ReadLine()
         End If
