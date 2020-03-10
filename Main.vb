@@ -37,13 +37,21 @@ Public Class Main
         Else
             Dim client = New Client(username, password)
 
-            Console.WriteLine("Does the user have admin acces? " & client.IsAdmin)
+            Console.WriteLine("Does the user have admin access? " & client.IsAdmin)
             Console.WriteLine("Name of the user: " & client.Nom)
             Console.WriteLine(String.Empty)
 
-            For Each doc In New DocumentBD().Titre
+            Dim docs As New DocumentBD()
+
+            For Each doc In docs.Titre
+                Console.WriteLine(doc)
+                client.ReserverSwitchDoc(doc)
+            Next
+
+            For Each doc In docs.Reserve
                 Console.WriteLine(doc)
             Next
+
             Console.Write("Press enter to continue... ")
             Console.ReadLine()
         End If

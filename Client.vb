@@ -17,19 +17,24 @@ Public Class Client
             Next
 
         Else
-            Throw New UnauthorizedAccessException("Crédentiel Erroné")
+            Throw New UnauthorizedAccessException("Crédentiels Erronés")
         End If
     End Sub
 
-    Private Sub ReserverDoc()
+    Public Sub ReserverSwitchDoc(docTitre As String)
+        Dim docs As New DocumentBD
+        Dim index As Integer = docs.Titre.IndexOf(docTitre)
+        Dim notBool As Boolean = Not docs.Reserve.ElementAt(index)
 
+        For Each doc In docs.Titre
+            If doc.Equals(docTitre) Then
+                docs.Reserve.Remove(docs.Reserve.ElementAt(index))
+                docs.Reserve.Insert(index, notBool)
+            End If
+        Next
     End Sub
 
-    Private Sub UnreserveDoc()
-
-    End Sub
-
-    Private Sub Renouveller()
+    Public Sub Renouveller()
 
     End Sub
 End Class

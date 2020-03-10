@@ -4,14 +4,20 @@ Imports System.IO
 Public Class Admin
     Inherits Utilisateur
 
-    Private docs As New DocumentBD
+    Overloads ReadOnly Property IsAdmin As Boolean
+    Private ReadOnly Property Docs As New DocumentBD
 
     Public Sub New()
-
+        _IsAdmin = True
     End Sub
 
     Public Sub New(userConnect As String, passConnect As String)
-        Connect(userConnect, passConnect)
+        Try
+            Connect(userConnect, passConnect)
+            _IsAdmin = True
+        Catch wrongLogin As UnauthorizedAccessException
+            Console.WriteLine("Crédentiels erronés")
+        End Try
     End Sub
 
     Public Sub AddDocument(docBD As DocumentBD)
