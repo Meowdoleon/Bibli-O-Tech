@@ -1,8 +1,8 @@
 Public Class Client
     Inherits Utilisateur
-    ReadOnly Property Nom As String
-    ReadOnly Property TelephoneNum As String
-    ReadOnly Property Courriel As String
+    ReadOnly Property Nom As String 'Nom du client
+    ReadOnly Property TelephoneNum As String 'Le numéro de téléphone du client
+    ReadOnly Property Courriel As String 'le couriel du client
 
     Public Sub New(userConnect As String, passConnect As String)
         Connect(userConnect, passConnect)
@@ -21,6 +21,10 @@ Public Class Client
         End If
     End Sub
 
+    ''' <summary>
+    ''' Réserve un document pour le client si celui si n'est pas déja réservé
+    ''' </summary>
+    ''' <param name="docTitre"> Le titre du document à réserver </param>
     Public Sub ReserverSwitchDoc(docTitre As String)
         Dim docs As New DocumentBD
         Dim index As Integer = docs.Titre.IndexOf(docTitre)
